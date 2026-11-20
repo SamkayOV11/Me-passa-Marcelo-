@@ -1,0 +1,94 @@
+
+import java.util.Scanner;
+
+public class Sorveteria {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+
+        int opcao;
+        int quantidade = 0;
+
+        double valorTotal;
+        double desconto = 0;
+        double valorFinal;
+
+        // Repetição do menu
+        do {
+            System.out.println("\n===== SORVETERIA =====");
+            System.out.println("1 - Chocolate");
+            System.out.println("2 - Morango");
+            System.out.println("3 - Baunilha");
+            System.out.println("4 - Flocos");
+            System.out.println("0 - Fechar pedido");
+
+            System.out.print("\nEscolha uma opção: ");
+            opcao = entrada.nextInt();
+
+            // Processamento das opções
+            switch (opcao) {
+                case 1:
+                    System.out.println("Chocolate adicionado!");
+                    quantidade++;
+                    break;
+
+                case 2:
+                    System.out.println("Morango adicionado!");
+                    quantidade++;
+                    break;
+
+                case 3:
+                    System.out.println("Baunilha adicionado!");
+                    quantidade++;
+                    break;
+
+                case 4:
+                    System.out.println("Flocos adicionado!");
+                    quantidade++;
+                    break;
+
+                case 0:
+                    System.out.println("Fechando pedido...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+                    break;
+            }
+
+        } while (opcao != 0);
+
+        // Verifica se o pedido possui bolas
+        if (quantidade == 0) {
+            System.out.println("Obrigado pela preferência!");
+        } else {
+
+            // Calcula o valor total
+            valorTotal = quantidade * 3.00;
+
+            // Verifica se existe desconto
+            if (quantidade >= 3) {
+                desconto = valorTotal * 0.15;
+            }
+
+            // Calcula o valor final
+            valorFinal = valorTotal - desconto;
+
+            // Apresenta o resultado
+            System.out.println("\n===== RESUMO DO PEDIDO =====");
+            System.out.println("Quantidade de bolas: " + quantidade);
+
+            System.out.printf("Valor sem desconto: R$ %.2f%n", valorTotal);
+
+            if (quantidade >= 3) {
+                System.out.printf("Desconto (15%%): R$ %.2f%n", desconto);
+            }
+
+            System.out.printf("Valor final: R$ %.2f%n", valorFinal);
+
+            System.out.println("Obrigado pela preferência!");
+        }
+
+        entrada.close();
+    }
+}
